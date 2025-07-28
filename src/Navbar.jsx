@@ -6,6 +6,7 @@ import axios from 'axios';
 import { addrequest } from './utils/requests';
 import { MdMarkUnreadChatAlt } from "react-icons/md";
 import toast from 'react-hot-toast';
+import { addconnections } from './utils/connectionslice';
 
 const Navbar = () => {
   
@@ -36,6 +37,20 @@ const Navbar = () => {
     console.log("Error:"+err);
   }
  }
+
+ const requestconn = async ()=>{
+  try{
+    const data = await axios.get(url+"connections",{
+      withCredentials:true
+    })
+    dispatch(addconnections(data.data));
+  }
+  catch(err){
+    console.log("Error:"+err);
+  }
+ }
+
+
   useEffect(() => {
    refresh();
   }, [])
@@ -77,6 +92,9 @@ const Navbar = () => {
   </div>
   <div className="flex gap-1 items-center">
     {/* <input type="text" placeholder="Search" className="input input-bordered w-24 md:w-auto" /> */}
+    {
+      console.log(user)
+    }
       {user?<MdMarkUnreadChatAlt className='mr-2 mt-1 w-6 h-6' onClick={()=>{
         toast.success("Feature Coming Soon!")
       }}/>:""}
@@ -105,7 +123,7 @@ const Navbar = () => {
           </Link>
         </li>
         <li><Link to="/request"  onClick={requesthandle}>Requests</Link></li>
-        <li><Link to="/connections"  onClick={requesthandle}>Connections</Link></li>
+        <li><Link to="/connections"  onClick={requestconn}>Connections</Link></li>
         <li><Link onClick={handlelogout}>Logout</Link></li>
       </ul>
     </div>

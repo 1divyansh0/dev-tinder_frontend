@@ -1,6 +1,6 @@
 import axios from 'axios';
 import React, { useEffect, useState } from 'react'
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { adduser } from './utils/userslice';
 import { useNavigate } from 'react-router-dom';
 import toast from 'react-hot-toast';
@@ -18,6 +18,8 @@ const navigate = useNavigate();
  const [gender, setgender] = useState("")
 
  const url = import.meta.env.VITE_BASE_URL;
+
+ 
  
  const handlesignup = async()=>{
   try{
@@ -51,15 +53,16 @@ const handler =  async()=>{
         withCredentials : true
       })
 
-      
-   
+      console.log(data)
       dispatch(adduser(data.data));
+      // const user = useSelector(store=>store.user);
+      // console.log(user);
       toast.success(`Welcome ${data?.data?.firstname}!`)
       navigate("/feed")
     }
     catch(err){
       console.log(err);
-       toast.error(err.response.data)
+       toast.error(err?.response?.data)
     }
 
  }
