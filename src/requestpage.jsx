@@ -10,7 +10,7 @@ const requestpage = () => {
   return(
     <div className='flex flex-col gap-3'>
       {requestdata?.map((ele)=>{
-        return <Requestcard data = {ele}/>
+        return <Requestcard key={ele._id} data = {ele}/>
       })
       }
     </div>
