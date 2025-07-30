@@ -29,11 +29,11 @@ const requestcard = ({data}) => {
   <div className="card-body">
     <h2 className="card-title"></h2>
     <div className='flex gap-2'>
-      <img src={data?.fromuserid.dp} className='w-15 h-15 rounded' alt="" />
+      <img src={data?.fromuserid?.dp} className='w-15 h-15 rounded' alt="" />
     <div className='flex-col'>
-      <h1 className='font-semibold'>{data?.fromuserid.firstname+" "+data?.fromuserid.lastname}</h1>
-      <p>{data?.fromuserid.About}</p>
-      <p>{data?.fromuserid.gender}</p>
+      <h1 className='font-semibold'>{data?.fromuserid?.firstname+" "+data?.fromuserid?.lastname}</h1>
+      <p>{data?.fromuserid?.About}</p>
+      <p>{data?.fromuserid?.gender}</p>
     </div>
     </div>
     <div className="card-actions justify-end">
