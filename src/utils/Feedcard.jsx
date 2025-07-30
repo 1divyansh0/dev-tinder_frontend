@@ -20,8 +20,11 @@ const card = ({yourfeed}) => {
      dispatch(removefeed(id))
 
      if(status=="interested")
-      toast.success("Connection Request Sent");
-    else toast.error("Profile Ignored!")
+      toast.success("Connection Request Sent",{
+        duration:3000});
+    else toast.error("Profile Ignored!",{
+      duration:3000
+    })
 
     }catch(err){
       console.log(err);
