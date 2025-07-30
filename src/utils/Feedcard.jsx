@@ -21,9 +21,9 @@ const card = ({yourfeed}) => {
 
      if(status=="interested")
       toast.success("Connection Request Sent",{
-        duration:3000});
+        duration:1000});
     else toast.error("Profile Ignored!",{
-      duration:3000
+      duration:1000
     })
 
     }catch(err){
