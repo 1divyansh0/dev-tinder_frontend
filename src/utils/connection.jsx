@@ -9,11 +9,16 @@ const connection = () => {
   
   const dispatch = useDispatch();
   const url =  import.meta.env.VITE_BASE_URL;
+  const token = localStorage.getItem("token");
   
   const getdata = async()=>{
     const id = toast.loading("Loading Your Connections")
     try{
     const data = await axios.get(url+"connections",{
+
+        headers: {
+        Authorization: `Bearer ${token}`,
+        },
         withCredentials:true
     })
     toast.success("Your Connections has been Loaded!",{id:id})
